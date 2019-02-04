@@ -166,7 +166,9 @@ const math_percent = sum_percents/2;
 results_all_percent.push({variant: results_rep_percent[i].variant, percent: math_percent})
 }
 
-let results_gp_str = `<h2>Результаты голосования по СГ участников:</h2>
+let results_gp_str = `<hr>
+<h2>Результаты голосования по СГ участников:</h2>
+<hr>
 <table>
 <thead>
 <tr>
@@ -182,7 +184,9 @@ results_gp_str += `<tr>
 }
 results_gp_str += `</tbody></table>`;
 
-let results_rep_str = `<h2>Результаты голосования по репутации (рейтингу) участников:</h2>
+let results_rep_str = `<hr>
+<h2>Результаты голосования по репутации (рейтингу) участников:</h2>
+<hr>
 <table>
 <thead>
 <tr>
@@ -198,7 +202,9 @@ results_rep_str += `<tr>
 }
 results_rep_str += `</tbody></table>`;
 
-let results_all_str = `<h2>Результаты голосования и по СГ, и по репутации (рейтингу) участников (Среднее значение процента каждого варианта):</h2>
+let results_all_str = `<hr>
+<h2>Результаты голосования и по СГ, и по репутации (рейтингу) участников (Среднее значение процента каждого варианта):</h2>
+<hr>
 <table>
 <thead>
 <tr>
