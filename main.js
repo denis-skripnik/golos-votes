@@ -70,9 +70,9 @@ votes_li += `<li><a href="index.html?author=${vote.author}&id=${vote.permlink.sl
 }
 
 		$("#vote_page").html(`<h2>100 последних опросов</h2>
-<ul>
+<ol>
 ${votes_li}
-</ul>`);
+</ol>`);
 		} catch(e) {
 		$("#vote_page").html(`<h2>Ошибка</h2>
 	<p><strong>Вероятно, id такого опроса нет. Просьба проверить его. Либо ознакомьтесь с текстом ошибки ниже:</strong></p>
