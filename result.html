@@ -71,25 +71,6 @@
             
             <script>
 async function page_data() {
-if (localStorage.getItem('login') && localStorage.getItem('PostingKey')) {
-    $('#unblock_form').css("display", "none");
-    $("#new_vote").css("display", "block");
-    $('#delete_posting_key').css("display", "block");
-	jQuery("#delete_posting_key").html('<p align="center"><a onclick="localStorage.removeItem(\'login\'\); localStorage.removeItem(\'PostingKey\'\);     location.reload();">Выйти</a></p>');
-	if (getUrlVars()['author'] && getUrlVars()['id']) {
-		var author = getUrlVars()['author'];
-author = author.toLowerCase();
-			var id = 'vote-' + getUrlVars()['id'];
-            await getVoteResult(author,id);
-    } else {
-    $("#vote_page").html(`<h2>Перейдите к опросу, чтобы проголосовать. Либо создайте новый справа.</h2>
-<p><strong>Список опросов можно увидеть тут: <a href="https://golos.io/created?tags=golos-votes" target="_blank">https://golos.io/created?tags=golos-votes</a></strong></p>`);
-    }
-} else if (sessionStorage.getItem('login') && sessionStorage.getItem('PostingKey')) {
-    $('#unblock_form').css("display", "none");
-$("#new_vote").css("display", "block");
-    $('#delete_posting_key').css("display", "block");
-	jQuery("#delete_posting_key").html('<p align="center"><a onclick="sessionStorage.removeItem(\'login\'\); sessionStorage.removeItem(\'PostingKey\'\);     location.reload();">Выйти</a></p>');
 	if (getUrlVars()['author'] && getUrlVars()['id']) {
 		var author = getUrlVars()['author'];
 author = author.toLowerCase();
@@ -99,12 +80,20 @@ author = author.toLowerCase();
     $("#vote_page").html(`<h2>Перейдите к опросу, чтобы проголосовать. Либо создайте новый справа.</h2>
 <p><strong>Список опросов можно увидеть тут: <a href="https://golos.io/created?tags=golos-votes" target="_blank">https://golos.io/created?tags=golos-votes</a></strong></p>`);
     }
+    if (localStorage.getItem('login') && localStorage.getItem('PostingKey')) {
+    $('#unblock_form').css("display", "none");
+    $("#new_vote").css("display", "block");
+    $('#delete_posting_key').css("display", "block");
+	jQuery("#delete_posting_key").html('<p align="center"><a onclick="localStorage.removeItem(\'login\'\); localStorage.removeItem(\'PostingKey\'\);     location.reload();">Выйти</a></p>');
+} else if (sessionStorage.getItem('login') && sessionStorage.getItem('PostingKey')) {
+    $('#unblock_form').css("display", "none");
+$("#new_vote").css("display", "block");
+    $('#delete_posting_key').css("display", "block");
+	jQuery("#delete_posting_key").html('<p align="center"><a onclick="sessionStorage.removeItem(\'login\'\); sessionStorage.removeItem(\'PostingKey\'\);     location.reload();">Выйти</a></p>');
 } else {
 	$('#delete_posting_key').css("display", "none");
     $("#new_vote").css("display", "none");
     $('#unblock_form').css("display", "block");
-    $("#vote_page").html(`<h2>Авторизуйтесь, чтобы проголосовать или создать опрос.</h2>
-<p><strong>Список опросов можно увидеть тут: <a href="https://golos.io/created?tags=golos-votes" target="_blank">https://golos.io/created?tags=golos-votes</a></strong></p>`);
 }
 }
 
