@@ -66,7 +66,7 @@ var query = {
 		const getVotes = await golos.api.getDiscussionsByActiveAsync(query);
 let votes_li = '';
 for (let vote of getVotes) {
-votes_li += `<li><a href="/?author=${vote.author}&id=${vote.permlink.slice(5)}" target="_blank">${vote.title}</a></li>`
+votes_li += `<li><a href="index.html?author=${vote.author}&id=${vote.permlink.slice(5)}" target="_blank">${vote.title}</a></li>`
 }
 
 		$("#vote_page").html(`<h2>100 последних опросов</h2>
