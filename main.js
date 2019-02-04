@@ -57,7 +57,30 @@ const rep = await repLog10(reputation);
 return [gp, rep];
 }
 
-async function log10(str) {
+async function getVotes() {
+	try {
+var query = {
+  select_tags: ['golos-votes'],
+  limit: 100
+};
+		const getVotes = await golos.api.getDiscussionsByActiveAsync(query);
+let votes_li = '';
+for (let vote of getVotes) {
+votes_li += `<li><a href="/?author=${vote.author}&id=${vote.permlink.slice(5)}" target="_blank">${vote.title}</a></li>`
+}
+
+		$("#vote_page").html(`<h2>100 последних опросов</h2>
+<ul>
+${votes_li}
+</ul>`);
+		} catch(e) {
+		$("#vote_page").html(`<h2>Ошибка</h2>
+	<p><strong>Вероятно, id такого опроса нет. Просьба проверить его. Либо ознакомьтесь с текстом ошибки ниже:</strong></p>
+	${e}`);
+	}
+	}
+
+	async function log10(str) {
     const leadingDigits = parseInt(str.substring(0, 4));
     const log = Math.log(leadingDigits) / Math.LN10 + 0.00000001
     const n = str.length - 1;
@@ -343,7 +366,7 @@ descr += `
 2. Перейдя по ссылке https://dpos.space/golos-voteing?author=${golos_login}&id=${id}`;
 
 if (golos_login.length > 0 && posting_key.length > 0) {
-	var json = {};
+	var json = {tags: ['golos-votes', 'ru--opros', 'vote', 'votes']};
 	const benecs = [{account: 'denis-skripnik', weight:1000}];
 	try {
 let operations = [
