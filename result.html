@@ -91,6 +91,10 @@ if (localStorage.getItem('login') && localStorage.getItem('PostingKey')) {
 $("#new_vote").css("display", "block");
     $('#delete_posting_key').css("display", "block");
 	jQuery("#delete_posting_key").html('<p align="center"><a onclick="sessionStorage.removeItem(\'login\'\); sessionStorage.removeItem(\'PostingKey\'\);     location.reload();">Выйти</a></p>');
+} else {
+	$('#delete_posting_key').css("display", "none");
+    $("#new_vote").css("display", "none");
+    $('#unblock_form').css("display", "block");
 }
 }
 
