@@ -275,7 +275,8 @@ async function sendVoteAnswer(golos_login, posting_key, author, id, body) {
 id = 'vote-' + id;
 	var answer_id = 'answer-in-' + id;
 try {
-const res = golos.broadcast.commentAsync(posting_key, author, id, golos_login, answer_id, '', body, '{}');
+			const benecs = [{account: 'denis-skripnik', weight:1000}];
+const res = golos.broadcast.commentAsync(posting_key, author, id, golos_login, answer_id, '', body, [[ 0, {"beneficiaries":benecs} ]]);
 await actionResult(`Ваш ответ опубликован успешно.`);
 } catch(e) {
 	await actionResult(`Ошибка:
@@ -378,7 +379,8 @@ descr += `
 if (golos_login.length > 0 && posting_key.length > 0) {
 	var json = {variants};
 	try {
-	const result = golos.broadcast.commentAsync(posting_key, '', 'golos-votes', golos_login, permlink, data.title, descr, JSON.stringify(json));
+			const benecs = [{account: 'denis-skripnik', weight:1000}];
+	const result = golos.broadcast.commentAsync(posting_key, '', 'golos-votes', golos_login, permlink, data.title, descr, JSON.stringify(json), [[ 0, {"beneficiaries":benecs} ]]);
 await actionResult(`<p><strong>Опрос создан успешно.</strong></p>
 <p align="center"><a href="?author=${golos_login}&id=${id}/" target="_blank">Перейти к опросу</a></p>`);
 } catch(e) {
