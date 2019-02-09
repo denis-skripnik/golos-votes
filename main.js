@@ -381,7 +381,7 @@ const variant_permlink = permlink + '-variant-' + variants_count;
 
 const result = golos.broadcast.sendAsync({extensions: [], operations}, [posting_key]);
 await actionResult(`<p><strong>Опрос создан успешно.</strong></p>
-<p align="center"><a href="?author=${golos_login}&id=${id}/" target="_blank">Перейти к опросу</a></p>`);
+<p align="center"><a href="/golos-voteing?author=${golos_login}&id=${id}/" target="_blank">Перейти к опросу</a></p>`);
 } catch(e) {
 	await actionResult(`Ошибка:
 ` + e);
