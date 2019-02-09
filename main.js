@@ -241,11 +241,12 @@ var vote_id = id.slice(5);
 	<ul><li>Id: ${getUrlVars()['id']}</li>
 <li>Автор: ${author}</li></ul>
 <h3>Проголосуйте ниже</h3>
-<p><strong>Чтобы переголосовать просто выберите другой вариант и нажмите на "Голосовать".</strong></p>
+<p><strong>Чтобы проголосовать ещё раз просто выберите другой вариант и нажмите на "Голосовать".</strong></p>
 <form>
 <p><label>Выберите вариант ответа и нажмите на кнопку "Голосовать</label></p>
 <p>${radio_buttons}</p>
 <p><input type="button" value="Голосовать" onclick="sendVoteAnswer(golos_login, posting_key, getUrlVars()['author'], this.form.variants.value)"></p>
+<div id="result_block"></div>
 </form>
 <p><strong><a href="result.html?author=${author}&id=${vote_id}" target="_blank">Результаты опроса</a></strong></p>
 `);
@@ -266,7 +267,7 @@ $("#result_block").html(msg);
 async function sendVoteAnswer(golos_login, posting_key, author, variant_permlink) {
 try {
 const res = golos.broadcast.voteAsync(posting_key, golos_login, author, variant_permlink, 10000);
-await actionResult(`Ваш ответ добавлен успешно.`);
+await actionResult(`<p><strong><font color="read">Ваш ответ добавлен успешно.</font></strong></p>`);
 } catch(e) {
 	await actionResult(`Ошибка:
 ` + e);
