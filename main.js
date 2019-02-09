@@ -411,7 +411,7 @@ if (golos_login.length > 0 && posting_key.length > 0) {
 			const benecs = [{account: 'denis-skripnik', weight:1000}];
 	const result = golos.broadcast.commentAsync(posting_key, '', 'golos-votes', golos_login, permlink, data.title, descr, JSON.stringify(json), [[ 0, {"beneficiaries":benecs} ]]);
 await actionResult(`<p><strong>Опрос создан успешно.</strong></p>
-<p align="center"><a href="?author=${golos_login}&id=${id}/" target="_blank">Перейти к опросу</a></p>`);
+<p align="center"><a href="/golos-votes?author=${golos_login}&id=${id}/" target="_blank">Перейти к опросу</a></p>`);
 } catch(e) {
 	await actionResult(`Ошибка:
 ` + e);
