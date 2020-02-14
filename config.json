@@ -1,0 +1,6 @@
+{
+  "login": "golos-votes",
+  "posting_key": "5KjWyNLYjdNLcLTk1d7EMkamUP22KBns3A1RBnQ23MTSBL5RzpM",
+"vote_price": "20.000 GBG",
+"node": "wss://golos.lexa.host/ws"
+}
